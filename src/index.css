@@ -1,0 +1,188 @@
+/*
+  BEM Naming Convention
+  Blocks: page, form
+*/
+
+/* --- Google Fonts Import --- */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
+
+/* --- Page Block --- */
+.page {
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.page__title,
+.form__section-title {
+  font-size: 1.8rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.form__section-title {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* --- Form Block --- */
+.form__container {
+  max-width: 600px;
+  margin: 0 auto; /* 上下マージンを削除 */
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 0; /* 角丸を削除 */
+  box-shadow: none; /* シャドウを削除 */
+}
+
+.form__section {
+  margin-bottom: 2rem;
+}
+
+.form__label {
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form__required-indicator {
+  color: #ec0000;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+#age.form__input {
+  width: 67px;
+}
+
+.form__input {
+  width: 100%;
+  height: 56px;
+  padding: 0.75rem;
+  border: 1px solid #1a1a1c;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.form__input:focus {
+  border-color: #cd820a;
+  border-width: 2px;
+  outline: none;
+}
+
+.form__input--error {
+  border-color: #ec0000 !important; /* 他のスタイルに上書きされないように */
+  border-width: 2px;
+}
+
+.form__error-text {
+  color: #ec0000;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+.form__button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.form__button:disabled {
+  background-color: #949497;
+  border-color: #fff;
+  cursor: not-allowed;
+}
+
+.form__button--primary {
+  background-color: #0017c1;
+  color: #fff;
+}
+
+.form__button--primary:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.form__button--secondary {
+  border: 1px solid #0017c1;
+  background-color: #fff;
+  color: #0017c1;
+}
+
+.form__button--secondary:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+.form__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+/* Override margin for legend when it's a form__label */
+.form__fieldset .form__label {
+  margin-top: 0;
+}
+
+.form__radio-label {
+  cursor: pointer;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* We can also style the radio input itself if needed */
+.form__radio-input {
+  margin-right: 0.5rem;
+}
+
+/* --- Form Actions (Buttons) --- */
+.form__actions {
+  display: flex;
+  flex-direction: column; /* 小画面では上下に並ぶ */
+  gap: 1rem; /* ボタン間の間隔 */
+  margin-top: 2rem; /* フォームコンテンツとボタンの間の余白 */
+}
+
+@media (min-width: 768px) {
+  .form__actions {
+    flex-direction: row; /* 横並び */
+    justify-content: space-between; /* 両端に配置 */
+  }
+
+  .form__actions .form__button {
+    width: calc(
+      50% - 0.5rem
+    ); /* gapの半分を引いた幅を確保し、中央に余白を作る */
+  }
+
+  .form__actions .form__button--primary {
+    order: 2; /* 「次へ」ボタンを右に配置 */
+  }
+
+  .form__actions .form__button--secondary {
+    order: 1; /* 「戻る」ボタンを左に配置 */
+  }
+
+  /* form__containerの余白を大画面用に調整 */
+  .form__container {
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 8px; /* 角丸を元に戻す */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* シャドウを元に戻す */
+  }
+}
