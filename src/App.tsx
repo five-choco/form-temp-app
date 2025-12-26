@@ -85,10 +85,21 @@ function App() {
   const isSubmittable = allRequiredFilled && noErrors;
 
   // フォームのUI構造を定義し、各コンポーネントに必要なデータとロジックを渡す
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // ページの再読み込みを防ぐ
+    if (isSubmittable) {
+      alert("complete"); // アラートメッセージを表示
+      console.log("Form Data:", formData); // デバッグ用にフォームデータをコンソール出力
+      // 実際のアプリケーションでは、ここでデータをサーバーに送信するなどの処理を行います。
+    } else {
+      console.log("フォームに未入力項目またはエラーがあります。");
+    }
+  };
+
   return (
     <div className="form__container">
       <h1 className="page__title">あなたの情報を入力してください</h1>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <section className="form__section">
           <h2 className="form__section-title">名前</h2>
           <FormField
